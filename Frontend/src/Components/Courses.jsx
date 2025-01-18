@@ -1,8 +1,25 @@
-import React from 'react'
-import list from '../../public/list.json'
+import React, { useState } from 'react'
+// import list from '../../public/list.json'
 import Cards from './Cards'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import { useEffect } from 'react'
 function Courses() {
+
+  const [book,setbook] = useState([]);
+  useEffect(()=>{
+const getBook = async() =>{
+try {
+  const res = await axios.get("http://localhost:4001/book");
+  console.log(res.data);
+  setbook(res.data);
+} catch (error) {
+  console.log(error);
+}
+}
+getBook();
+  },[])
+
   // console.log(list)
   return (
   
@@ -21,8 +38,8 @@ We're delighted to have you <span className='text-pink-500'>
 </Link>  </div>
 <div className='grid grid-cols-1 md:grid-cols-4 gap-5'>
 {
-  list.map((item, index) => (
-    <Cards key={item.id} item={item} />
+  book.map((item, index) => (
+    <Cards key={item.id} item={item} name="vishal" />
   ))
  
 }

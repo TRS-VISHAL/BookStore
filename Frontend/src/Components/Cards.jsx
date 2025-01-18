@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Cards({item}) {
+function Cards({item ,name}) {
      console.log(item)
   return (
  <>
+ {console.log(name)}
  <div className='mt-6 mb-6'>
  <div className="card bg-base-100 w-92 mr-4 ml-4  hover:scale-105 duration-200 gapx-2 dark:border  dark:bg-slate-900 dark:text-white ">
   <figure>     
